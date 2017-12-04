@@ -5,8 +5,16 @@ import random
 # Draw a tree using recursion - New version that creates a new turtle every
 # time!
 #
-# Basically draw a line then calls itself twice at random angles and a reduced 
+# Basically draw a line then calls itself 3 times at random angles and a reduced
 # size until a specified size of branch is reached.
+#
+# Modification History
+# ====================
+# When       Who          Why
+# ---------- ------------ ------------------------------------------------------
+# 03/12/2017 Dave H       Initial version.
+# 04/12/2017 Dave H       Increased range of angles for outer branches and
+#                         speed of turtle to fastest.
 # ##############################################################################
 def newTree(pX, pY, pHeading, pSize, pLimit):
 
@@ -40,10 +48,10 @@ def newTree(pX, pY, pHeading, pSize, pLimit):
     # recursively call myself to draw 2 random branches
     if pSize > pLimit:
 
-        newTree(wTurtle.xcor(), wTurtle.ycor(),pHeading-random.randint(1,60),pSize - 15,pLimit)
+        newTree(wTurtle.xcor(), wTurtle.ycor(),pHeading-random.randint(1,90),pSize - 15,pLimit)
         newTree(wTurtle.xcor(), wTurtle.ycor(),pHeading-random.randint(-30,30),pSize - 15,pLimit)
-        newTree(wTurtle.xcor(), wTurtle.ycor(),pHeading+random.randint(1,60),pSize - 15,pLimit)
-       
+        newTree(wTurtle.xcor(), wTurtle.ycor(),pHeading+random.randint(1,90),pSize - 15,pLimit)
+
 
 
 # ##############################################################################
@@ -61,10 +69,8 @@ turtle.mode("logo")
 wTurtle = turtle.Turtle()
 
 # Set the speed of the turtle
-wTurtle.speed('fast')
+wTurtle.speed('fastest')
 
 newTree(-50,-100,0,70,20)
 newTree(0,-100,0,70,20)
 newTree(50,-100,0,70,20)
-
-
